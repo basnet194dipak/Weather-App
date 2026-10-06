@@ -22,7 +22,7 @@ export default {
     new HtmlWebpackPlugin({
       template: "./src/index.html",
     }),
-     new webpack.DefinePlugin({
+    new webpack.DefinePlugin({
       "process.env.API_KEY": JSON.stringify(process.env.API_KEY),
     }),
   ],

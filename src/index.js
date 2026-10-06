@@ -1,21 +1,19 @@
 import "./style.css";
 import { weather_data } from "../data";
 
-let default_location = "kathmandu"
-let metric = "metric"
-let default_unit = "C"
-let default_distance = "km"
-let locations = default_location
+let default_location = "kathmandu";
+let metric = "metric";
+let default_unit = "C";
+let default_distance = "km";
+let locations = default_location;
 
-
-// fill present data
-function present_future(content, classes){
-    var today = document.querySelector(`.${classes}`)
-    today.innerHTML = content
+function present_future(content, classes) {
+  var today = document.querySelector(`.${classes}`);
+  today.innerHTML = content;
 }
 
-function change_present(day){
-let present_content = `<div class="weather-card">
+function change_present(day) {
+  let present_content = `<div class="weather-card">
 
     <div class="weather-main">
         <div>
@@ -96,24 +94,32 @@ let present_content = `<div class="weather-card">
 
     </div>
 
-`
-present_future(present_content,"today")
+`;
+  present_future(present_content, "today");
 }
 
-function change_future(day)
-{
-let future_content = day.slice(1).map(item => `
+function change_future(day) {
+  let future_content = day
+    .slice(1)
+    .map(
+      (item) => `
     <div class="forecast-row">
 
         <div class="forecast-date">
-            <strong>${new Date(item.datetime + "T00:00:00").toLocaleDateString("en-US", {
-                weekday: "short"
-            })}</strong>
+            <strong>${new Date(item.datetime + "T00:00:00").toLocaleDateString(
+              "en-US",
+              {
+                weekday: "short",
+              },
+            )}</strong>
 
-            <span>${new Date(item.datetime + "T00:00:00").toLocaleDateString("en-US", {
+            <span>${new Date(item.datetime + "T00:00:00").toLocaleDateString(
+              "en-US",
+              {
                 month: "short",
-                day: "numeric"
-            })}</span>
+                day: "numeric",
+              },
+            )}</span>
         </div>
 
         <div class="forecast-weather">
@@ -131,47 +137,44 @@ let future_content = day.slice(1).map(item => `
         </div>
 
     </div>
-`).join("");
-present_future(future_content,"future")
-
+`,
+    )
+    .join("");
+  present_future(future_content, "future");
 }
 
-async function display(default_location, metric)
-{
-    let weather= await weather_data(default_location, metric)
-    let day = weather.days
-    change_present(day)
-    change_future(day)
+async function display(default_location, metric) {
+  let weather = await weather_data(default_location, metric);
+  let day = weather.days;
+  change_present(day);
+  change_future(day);
 }
 
-document.addEventListener("DOMContentLoaded", ()=>{
-    display(default_location,metric)
-})
+document.addEventListener("DOMContentLoaded", () => {
+  display(default_location, metric);
+});
 
-let change = document.querySelector(".change")
-change.addEventListener("click",()=>{
-    if (metric=="metric")
-    {
-        metric = "us"
-        default_unit = "K"
-        default_distance = "Miles"
-    }
-    else{
-        metric = "metric"
-        default_unit = "C"
-        default_distance="km"
-    }
-    display(locations, metric)
-})
-
+let change = document.querySelector(".change");
+change.addEventListener("click", () => {
+  if (metric == "metric") {
+    metric = "us";
+    default_unit = "K";
+    default_distance = "Miles";
+  } else {
+    metric = "metric";
+    default_unit = "C";
+    default_distance = "km";
+  }
+  display(locations, metric);
+});
 
 const form = document.querySelector("form");
 const loc = document.querySelector("#place");
 
-form.addEventListener("submit", function(event){
-    event.preventDefault();
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
 
-    const place = loc.value;
-    locations = place
-    display(locations, metric)
-})
+  const place = loc.value;
+  locations = place;
+  display(locations, metric);
+});
