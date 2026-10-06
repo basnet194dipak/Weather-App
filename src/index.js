@@ -163,3 +163,15 @@ change.addEventListener("click",()=>{
     }
     display(locations, metric)
 })
+
+
+const form = document.querySelector("form");
+const loc = document.querySelector("#place");
+
+form.addEventListener("submit", function(event){
+    event.preventDefault();
+
+    const place = loc.value;
+    locations = place
+    display(locations, metric)
+})
