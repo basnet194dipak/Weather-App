@@ -1,15 +1,57 @@
 .search
 {
-    background-color: blue;
     display: flex;
-    justify-content: end;
-    padding: 2%;
-    color: white;
+    justify-content: space-between;
+    height: 8vh;
+    color: black;
+    padding-top: 0%;
 }
 
 form
 {
-    width: 50%;
     display: flex;
-    gap: 8%;
+    align-items: center;
+    justify-content: space-between;
+    width: 30%;
+    display: flex;
+    gap: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+    border: 2px solid black;
+    border-radius: 12px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
+#place
+{
+    text-align: center;
+    width: 50%;
+    border: 2px solid black;
+    border-radius: 22px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+#submit
+{
+    width: 20%;
+}
+
+#submit:hover,
+#place:hover
+{
+    border: 2px solid black;
+    border-radius: 12px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    background-color: gainsboro;
+    color: blueviolet;
+    font-weight: bolder;
+}
+
+#place:hover::placeholder
+{
+    color: blueviolet;
+}
+#place, #submit
+{
+    height: 50%;
+    border-radius: 6px;
+}
+
