@@ -1,6 +1,10 @@
 // webpack.config.js
 import path from "node:path";
+import webpack from "webpack";
+import dotenv from "dotenv";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+
+dotenv.config();
 
 export default {
   mode: "development",
@@ -17,6 +21,9 @@ export default {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
+    }),
+     new webpack.DefinePlugin({
+      "process.env.API_KEY": JSON.stringify(process.env.API_KEY),
     }),
   ],
   module: {
