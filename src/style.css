@@ -1,0 +1,15 @@
+.search
+{
+    background-color: blue;
+    display: flex;
+    justify-content: end;
+    padding: 2%;
+    color: white;
+}
+
+form
+{
+    width: 50%;
+    display: flex;
+    gap: 8%;
+}
