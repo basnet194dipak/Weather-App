@@ -1,5 +1,5 @@
 import "./style.css";
-import { weather_data } from "../data";
+import { weather_data } from "./data.js";
 
 let default_location = "kathmandu";
 let metric = "metric";
